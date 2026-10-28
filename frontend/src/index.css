@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Global Defaults ──────────────────────────────────────────────────────── */
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-surface text-slate-200 font-sans antialiased;
+    min-height: 100vh;
+  }
+
+  /* Thin, styled scrollbar */
+  ::-webkit-scrollbar        { @apply w-1.5 h-1.5; }
+  ::-webkit-scrollbar-track  { @apply bg-transparent; }
+  ::-webkit-scrollbar-thumb  { @apply bg-surface-border rounded-full; }
+  ::-webkit-scrollbar-thumb:hover { @apply bg-slate-500; }
+}
+
+/* ── Reusable component classes ───────────────────────────────────────────── */
+@layer components {
+  /* Card */
+  .card {
+    @apply bg-surface-card border border-surface-border rounded-xl p-5;
+  }
+
+  /* Primary button */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-lg
+           bg-primary-600 text-white text-sm font-medium
+           hover:bg-primary-500 active:bg-primary-700
+           transition-colors duration-150 focus-visible:outline-none
+           focus-visible:ring-2 focus-visible:ring-primary-400;
+  }
+
+  /* Ghost button */
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-lg
+           text-slate-300 text-sm font-medium
+           hover:bg-surface-border hover:text-white
+           transition-colors duration-150 focus-visible:outline-none
+           focus-visible:ring-2 focus-visible:ring-primary-400;
+  }
+
+  /* Badge */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  /* Status indicators */
+  .status-healthy  { @apply bg-emerald-500/20 text-emerald-400; }
+  .status-warning  { @apply bg-amber-500/20 text-amber-400; }
+  .status-error    { @apply bg-red-500/20 text-red-400; }
+  .status-idle     { @apply bg-slate-500/20 text-slate-400; }
+}
